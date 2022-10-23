@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import queryString from "query-string";
-import Loader from "./Loader";
+import React, { Component } from 'react';
+import queryString from 'query-string';
+import Loader from './Loader';
 export default class BattleResult extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       firstPlayer: null,
       secondPlayer: null,
@@ -45,6 +45,7 @@ export default class BattleResult extends Component {
     return score;
   };
   render() {
+    console.log(this.props);
     if (!this.state.firstPlayer && !this.state.secondPlayer) {
       return <Loader />;
     } else {
@@ -52,7 +53,7 @@ export default class BattleResult extends Component {
       let secondPlayerScore = this.getScore(this.state.secondPlayer);
       return (
         <>
-          <div className="container result-container">
+          <div className='container result-container'>
             <UserProfileGenerator
               player={this.state.firstPlayer}
               playerScore={firstUserScore}
@@ -74,28 +75,28 @@ function UserProfileGenerator(props) {
   let { player, playerScore, playerTwoScore } = props;
   return (
     <>
-      <div className="result-card">
-        <div className="col-center">
-          <h4 className="winner">
-            {playerScore > playerTwoScore ? "Winner" : "Loser"}
+      <div className='result-card'>
+        <div className='col-center'>
+          <h4 className='winner'>
+            {playerScore > playerTwoScore ? 'Winner' : 'Loser'}
           </h4>
-          <img src={player.avatar_url} alt="players profile"></img>
+          <img src={player.avatar_url} alt='players profile'></img>
           <h6> Score : {playerScore}</h6>
-          <h2 className="username">{player.login}</h2>
+          <h2 className='username'>{player.login}</h2>
         </div>
         <p>
-          <i className="fas fa-user user">{player.name}</i>
+          <i className='fas fa-user user'>{player.name}</i>
         </p>
         <p>
-          <i className="fas fa-users followers"></i>
+          <i className='fas fa-users followers'></i>
           {player.followers}
         </p>
         <p>
-          <i className="fas fa-users following"></i>
+          <i className='fas fa-users following'></i>
           {player.following}
         </p>
         <p>
-          <i className="fas fa-code-branch ligt-black"></i>
+          <i className='fas fa-code-branch ligt-black'></i>
           {player.public_repos}
         </p>
       </div>
